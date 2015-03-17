@@ -1,0 +1,15 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET         /                       controllers.Application.index()
+
+GET         /api/userprofile        controllers.Application.userprofile()
+GET         /api/cart               controllers.Application.cart()
+POST        /api/cart               controllers.Application.addToCart()
+
+
+GET         /webjars/*file          controllers.WebJarAssets.at(file)
+
+GET         /vassets/*file          controllers.Assets.versioned(path="/public", file: Asset)
+GET         /assets/*file           controllers.Assets.at(path="/public", file)

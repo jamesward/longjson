@@ -1,0 +1,143 @@
+@()
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Long JSON</title>
+        <link rel='stylesheet' href='@routes.WebJarAssets.at(WebJarAssets.locate("css/bootstrap.min.css"))'>
+        <style>
+        .glyphicon-spin {
+            display: inline-block;
+            opacity: 0;
+            width: 0;
+
+            -webkit-transition: opacity 0.25s, width 0.25s;
+            -moz-transition: opacity 0.25s, width 0.25s;
+            -o-transition: opacity 0.25s, width 0.25s;
+            transition: opacity 0.25s, width 0.25s;
+        }
+
+        .has-spinner.active {
+            cursor:progress;
+        }
+
+        .has-spinner.active .glyphicon-spin {
+            opacity: 1;
+            width: auto;
+        }
+
+        .has-spinner.btn-mini.active .glyphicon-spin {
+            width: 10px;
+        }
+
+        .has-spinner.btn-small.active .glyphicon-spin {
+            width: 13px;
+        }
+
+        .has-spinner.btn.active .glyphicon-spin {
+            width: 16px;
+        }
+
+        .has-spinner.btn-large.active .glyphicon-spin {
+            width: 19px;
+        }
+
+        .has-spinner.active .glyphicon-spin {
+            -webkit-animation: spin 1000ms infinite linear;
+            animation: spin 1000ms infinite linear;
+        }
+
+        @@-webkit-keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+
+        @@keyframes spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            100% {
+                -webkit-transform: rotate(359deg);
+                transform: rotate(359deg);
+            }
+        }
+        </style>
+        <script type='text/javascript' src='@routes.WebJarAssets.at(WebJarAssets.locate("jquery.min.js"))'></script>
+        <script type='text/javascript' src='@routes.Assets.versioned("javascripts/index.js")'></script>
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="@routes.Application.index()">
+                        Long JSON
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            <div class="panel panel-default">
+                <div id="profileHeading" class="panel-heading has-spinner active">
+                    <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+                    <h3 class="panel-title" style="display: inline;">User Profile</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-1"><strong>Name:</strong></div>
+                        <div id="profileName" class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"><strong>Email:</strong></div>
+                        <div id="profileEmail" class="col-md-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-1"><strong>Role:</strong></div>
+                        <div id="profileRole" class="col-md-1"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel panel-default">
+                <div id="cartHeading" class="panel-heading has-spinner active">
+                    <span class="glyphicon glyphicon-refresh glyphicon-spin"></span>
+                    <h3 class="panel-title" style="display: inline;">Cart</h3>
+                </div>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="header">
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cartItems">
+                        </tbody>
+                    </table>
+                <div class="panel-footer">
+                    <form id="addToCartForm" class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="cartItemName" placeholder="Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" step="0.01" class="form-control" id="cartItemPrice" placeholder="Price">
+                        </div>
+                        <div class="form-group">
+                            <input type="number" class="form-control" id="cartItemQuantity" placeholder="Quantity">
+                        </div>
+                        <button id="addToCartButton" type="submit" class="btn btn-default has-spinner"><span class="glyphicon glyphicon-refresh glyphicon-spin"></span>Add Item To Cart</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
